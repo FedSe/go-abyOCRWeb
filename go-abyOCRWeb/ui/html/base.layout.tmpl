@@ -1,0 +1,19 @@
+{{define "base"}}
+<!doctype html>
+<html lang='en'>
+<head>
+    <meta charset='utf-8'>
+    <title>{{template "title" .}}</title>
+    <link rel='stylesheet' href='/static/css/main.css'>
+</head>
+<body>
+    <header>
+        <h1><a href='/'>Работа с PDF через ABBYY FR15</a></h1>
+    </header>
+    <main>
+        {{template "main" .}}
+    </main>
+    {{template "footer" .}}
+</body>
+</html>
+{{end}}

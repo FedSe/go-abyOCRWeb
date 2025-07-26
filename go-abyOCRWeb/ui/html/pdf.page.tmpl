@@ -1,0 +1,52 @@
+{{template "base" .}}
+
+{{define "title"}}PDF - инструменты{{end}}
+
+{{define "main"}}
+	<form id="pdf-form" action="/pdf" method="post" enctype="multipart/form-data">
+
+	<div class="language-selection">
+		<label>Распознаваемые языки:</label>
+		<label><input type="radio" name="lang" value="ru" checked> Русский</label>
+		<label><input type="radio" name="lang" value="ruen"> Русский/Английский</label>
+	</div>
+
+        <div class="form-container">
+            <div class="form-panel active" data-target="word">
+                <h3 class="panel-header">Конвертация</h3>
+				PDF в WORD
+                <div class="panel-content">
+					<label><input type="checkbox" name="co" value="a"> Сохранить номера строк</label>
+                    <label><input type="checkbox" name="co" value="b"> Сохранить деление на страницы</label>
+                    <label><input type="checkbox" name="co" value="c" checked> Выделить неуверенно распознанные символы</label>
+                    <label><input type="checkbox" name="co" value="d"> Сохранить цвета фона и букв</label>
+                    <label><input type="checkbox" name="co" value="f"> Сохранить колонтитулы</label>
+                    <label><input type="checkbox" name="co" value="g" checked> Сохранять картинки</label>
+                    <label><input type="checkbox" name="co" value="h"> Сохранить переносы</label>
+				</div>
+			</div>
+            <div class="form-panel" data-target="ocr">
+                <h3 class="panel-header">Преобразование</h3>
+				PDF в машиночитаемый
+                <div class="panel-content inactive">
+                    <label><input type="radio" name="oc" value="toi"> Текст поверх изображений</label>
+                    <label><input type="radio" name="oc" value="iot" checked> Изображения поверх текста</label>
+                </div>
+            </div>
+        </div>
+
+	<div class="file-upload-section">
+		<input type="file" id="fileInput" name="file" style="display: none;" required>
+		<div class="dropzone" id="dropzone">
+			<div class="dropzone-content">
+				<p>Перетащите файл сюда, или нажмите для выбора</p>
+ 			</div>
+		</div>
+	</div>
+
+	<button type="submit" id="submit-btn">Преобразовать</button>
+	<input type="hidden" name="mode" id="active-panel" value="word">
+	</form>
+
+	<script src="/static/js/main.js"></script>
+{{end}}
